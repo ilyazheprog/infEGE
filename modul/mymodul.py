@@ -1,5 +1,30 @@
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
+
+def factorize(number):
+    prime_factors = []
+
+    while number % 2 == 0:
+        prime_factors.append(2)
+        number = number / 2
+
+
+    for i in range(3, int(number**0.5) + 1, 2):
+        while number % i == 0:
+            prime_factors.append(int(i))
+            number = number / i
+
+    if number > 2:
+        prime_factors.append(int(number))
+
+    return prime_factors
+
+def factorial(n):
+    r = 1
+    for var in range(1, n+1):
+        r*=var
+    return r
+
 def div(n, d):
     return n//d
 
@@ -15,7 +40,6 @@ def divizors(n):
     divs=list(divs)
     divs.sort()
     return divs
-
 
 def read(type=int, sep=' ', n=1):
     if n==1:
