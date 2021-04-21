@@ -1,8 +1,21 @@
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
+def div(n, d):
+    return n//d
 
 def mod(n, d):
     return n%d
+
+def divizors(n):
+    divs=set()
+    for d in range(2, int(n**0.5)+1):
+        if mod(n, d)==0:
+            divs.add(d)
+            divs.add(n//d)
+    divs=list(divs)
+    divs.sort()
+    return divs
+
 
 def read(type=int, sep=' ', n=1):
     if n==1:
@@ -45,7 +58,6 @@ def indexN(string, substring, N=1):
     """
     index, count = None, 0
     for i in range(len(string) - len(substring) + 1):
-        s=string[i:i + len(substring):]
         if string[i:i + len(substring):] == substring:
             count += 1
             if count==N:
