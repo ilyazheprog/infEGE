@@ -1,5 +1,10 @@
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
+def power(n, exp):
+    return n ** exp
+
+def sqrt(n):
+    return power(n, 0.5)
 
 def factorize(number):
     prime_factors = []
@@ -9,7 +14,7 @@ def factorize(number):
         number = number / 2
 
 
-    for i in range(3, int(number**0.5) + 1, 2):
+    for i in range(3, int(sqrt(number)) + 1, 2):
         while number % i == 0:
             prime_factors.append(int(i))
             number = number / i
@@ -29,11 +34,11 @@ def div(n, d):
     return n//d
 
 def mod(n, d):
-    return n%d
+    return abs(n%d)
 
 def divizors(n):
     divs=set()
-    for d in range(2, int(n**0.5)+1):
+    for d in range(2, int(sqrt(n))+1):
         if mod(n, d)==0:
             divs.add(d)
             divs.add(n//d)
@@ -65,12 +70,12 @@ def dataTR(n, old,new):
     return n*s[old]/s[new]
 
 def isPrime(n):
-    if int(n**0.5)**2==n:
+    if int(sqrt(n))**2==n or n in [0, 1]:
         return false
-    for i in range(2, int(n**0.5)):
-        if n%i==0:
+    for i in range(2, int(sqrt(n))):
+        if mod(n, i)==0:
             return false
-    return n > 1
+    return true
 
 def quickIn(a,el):
     d={x:1 for x in a}
