@@ -8,20 +8,15 @@ def sqrt(n):
 
 def factorize(number):
     prime_factors = []
-
     while number % 2 == 0:
         prime_factors.append(2)
         number = number / 2
-
-
     for i in range(3, int(sqrt(number)) + 1, 2):
         while number % i == 0:
             prime_factors.append(int(i))
             number = number / i
-
     if number > 2:
         prime_factors.append(int(number))
-
     return prime_factors
 
 def factorial(n):
@@ -46,20 +41,39 @@ def divizors(n):
     divs.sort()
     return divs
 
-def read(type=int, sep=' ', n=1):
-    if n==1:
-        return type(input())
+def read(type=int, /, **kwargs):
+    vr = kwargs
+    v = len(vr)
+    def var(n, /, **vr):
+        f = open('temp.py', 'w')
+        i = 0
+        for key, val in vr.items():
+            s = str(vr[key]) + ' = ' + str(n[i]) + '\n'
+            f.write(s)
+            i += 1
+        f.close()
+    
+    if type in [int, float]:
+        contents = []
+        c = 0
+        while c < v:
+            s = input()
+            if s == '':
+                pass
+            else:
+                while s[0] == ' ':
+                    s = s[1:]
+                while s[-1] == ' ':
+                    s = s[:-1]
+                c += len(list(s.split()))
+                contents += [*s.split()]
+            if v < len(contents):
+                raise TypeError(f"read() takes exactly {v} argument ({c} given)")
+        nn = [type(x) for x in contents]
+        var(nn, **vr)
     else:
-        if sep!='\n':
-            return map(type, input().split(sep))
-        else:
-            a, i = [], 1
-            while i<=n:
-                x = input()
-                if x!='':
-                    a+=[type(x)]
-                    i+=1
-            return a
+        raise TypeError(f"read() not supporting type {type}, supporting INT and FLOAT")
+
 
 def dataTR(n, old,new):
     s = {'bit':1, 'byte': 8, 'kbit': 1000,
