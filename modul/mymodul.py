@@ -1,8 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from os import getcwd
+from functools import wraps
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
+
+def cache(f):
+    ch = {}
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        key = str(args)+str(kwargs)
+        if key not in ch:
+            ch[key]=f(*args, **kwargs)
+        return ch[key]
+    return wrapper
 
 def power(n, exp):
     return n ** exp
