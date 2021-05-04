@@ -1,4 +1,4 @@
-7
+from os import getcwd
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
 def power(n, exp):
@@ -47,7 +47,9 @@ def read(**kwargs):
     vr = kwargs
     v = len(vr)
     def var(n, /, **vr):
-        f = open('temp.py', 'w')
+        path = getcwd()
+        path += '/temp.py'
+        f = open(path, 'w')
         for (key, val ), r in zip(vr.items(), n):
             s = str(key) + ' = ' + str(val(r)) + '\n'
             f.write(s)
