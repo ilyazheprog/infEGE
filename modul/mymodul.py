@@ -1,3 +1,4 @@
+
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
 def power(n, exp):
@@ -41,19 +42,20 @@ def divizors(n):
     divs.sort()
     return divs
 
-def read(type=int, /, **kwargs):
+
+def read(**kwargs):
     vr = kwargs
     v = len(vr)
     def var(n, /, **vr):
         f = open('temp.py', 'w')
         i = 0
         for key, val in vr.items():
-            s = str(vr[key]) + ' = ' + str(n[i]) + '\n'
+            s = str(key) + ' = ' + str(val(n[i])) + '\n'
             f.write(s)
             i += 1
         f.close()
-    
-    if type in [int, float]:
+        
+    def logics():
         contents = []
         c = 0
         while c < v:
@@ -69,10 +71,10 @@ def read(type=int, /, **kwargs):
                 contents += [*s.split()]
             if v < len(contents):
                 raise TypeError(f"read() takes exactly {v} argument ({c} given)")
-        nn = [type(x) for x in contents]
-        var(nn, **vr)
-    else:
-        raise TypeError(f"read() not supporting type {type}, supporting INT and FLOAT")
+        nn = [str(x) for x in contents]
+        return nn
+        
+    var(logics(), **vr)
 
 
 def dataTR(n, old,new):
