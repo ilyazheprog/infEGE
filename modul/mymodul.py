@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from os import getcwd
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
