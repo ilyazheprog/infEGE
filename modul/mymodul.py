@@ -1,4 +1,4 @@
-
+7
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
 def power(n, exp):
@@ -48,11 +48,9 @@ def read(**kwargs):
     v = len(vr)
     def var(n, /, **vr):
         f = open('temp.py', 'w')
-        i = 0
-        for key, val in vr.items():
-            s = str(key) + ' = ' + str(val(n[i])) + '\n'
+        for (key, val ), r in zip(vr.items(), n):
+            s = str(key) + ' = ' + str(val(r)) + '\n'
             f.write(s)
-            i += 1
         f.close()
         
     def logics():
@@ -75,6 +73,7 @@ def read(**kwargs):
         return nn
         
     var(logics(), **vr)
+    
 
 
 def dataTR(n, old,new):
