@@ -3,6 +3,6 @@
 
 Контакты
 ==========
-VK: https://vk.com/programmer7
-TELEGRAM: @IZ_PROGRAMMER
+VK: https://vk.com/programmer7 \n
+TELEGRAM: @IZ_PROGRAMMER \n
 EMAIL: ucdo854@kemcdo.ru
