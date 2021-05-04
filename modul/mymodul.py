@@ -4,6 +4,12 @@ from os import getcwd
 from functools import wraps
 true, false, maxValue, minValue = True, False, float('inf'), float('-inf')
 
+def fibonacci(n):
+    numbers = [0, 1]
+    for var in range(2, n+1):
+         numbers += [numbers[var -2]+numbers[var-1]]
+    return numbers[-1]
+
 def cache(f):
     ch = {}
     @wraps(f)
