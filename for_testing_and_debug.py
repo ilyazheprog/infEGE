@@ -2,5 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from modul import *
-n=8
-print(fibonacci(n))
+@cache
+def f():
+    '''popioik'''
+    return 10
+
+print(f.__name__)
