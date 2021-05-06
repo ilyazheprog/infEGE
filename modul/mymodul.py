@@ -17,6 +17,7 @@ def read(**kwargs):
     vr = kwargs
     v = len(vr)
     def var(n, /, **vr):
+        from os import getcwd
         path = getcwd()
         path += '/temp.py'
         f = open(path, 'w')

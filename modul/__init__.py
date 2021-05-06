@@ -6,5 +6,3 @@ from .mathematics import *
 from .varibles import *
 from .temp import *
 from .other_algorithms import *
-
-from os import getcwd

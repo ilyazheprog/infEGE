@@ -7,4 +7,3 @@ def f():
     '''popioik'''
     return 10
 
-print(f.__name__)
