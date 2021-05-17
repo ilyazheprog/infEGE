@@ -1,10 +1,48 @@
 from .varibles import *
-def fibonacci(n):
-    numbers = [0, 1]
-    for var in range(2, n+1):
-         numbers += [numbers[var -2]+numbers[var-1]]
-    return numbers[-1]
 
+def fib(n):
+    __author__='kaazniy'
+
+    def matrix_mult(matrix1, matrix2):
+        return [
+            [matrix1[0][0] * matrix2[0][0] + matrix1[0][1] * matrix2[1][0],
+             matrix1[0][0] * matrix2[0][1] + matrix1[0][1] * matrix2[1][1]],
+            [matrix1[1][0] * matrix2[0][0] + matrix1[1][1] * matrix2[1][0],
+             matrix1[1][0] * matrix2[0][1] + matrix1[1][1] * matrix2[1][1]],
+        ]
+
+    def quick_exp(matrix: list[list[int]], power: int):
+        if power == 0:
+            return [[1, 0], [0, 1]]
+        elif power == 1:
+            return matrix
+        else:
+            p = power // 2
+            m = power % 2
+    
+            sub = quick_exp(matrix, p)
+            squared = matrix_mult(sub, sub)
+            rem = quick_exp(matrix, m)
+            return matrix_mult(squared, rem)
+
+    if n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return (quick_exp([[1, 1], [1, 0]], n-1))[0][0]
+
+def div(n, d):
+    return n//d
+
+def mod(n, d):
+    return abs(n%d)
+
+def is_Even(n):
+    return mod(n, 2)==0
+
+def is_Odd(n):
+    return mod(n, 2)==1
 
 def power(n, exp):
     return n ** exp
@@ -31,11 +69,6 @@ def factorial(n):
         r*=var
     return r
 
-def div(n, d):
-    return n//d
-
-def mod(n, d):
-    return abs(n%d)
 
 def divizors(n):
     divs=set()

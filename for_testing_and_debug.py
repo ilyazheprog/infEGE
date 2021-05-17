@@ -2,8 +2,4 @@
 # -*- coding: utf-8 -*-
 
 from modul import *
-@cache
-def f():
-    '''popioik'''
-    return 10
-
+a, b = read(int, int)
