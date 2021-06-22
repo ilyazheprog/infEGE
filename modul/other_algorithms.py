@@ -1,20 +1,34 @@
-def dataTR(n, old, new):
+def data_tr(n: float, old: str, new: str) -> float:
+    """
+    Переводит объёмы информации
+    :param n:
+    :param old:
+    :param new:
+    :return: float
+    """
     s = {'bit': 1, 'byte': 8,
-         'kbit': 2 ** 10, 'kbyte': 8 * 2 ** 10,
+         'kbyte': 8 * 2 ** 10, 'kbit': 2 ** 10,
          'mbyte': 8 * 2 ** 20, 'mbit': 2 ** 20,
          'gbyte': 8 * 2 ** 30, 'gbit': 2 ** 30,
-         'tbyte': 8 * 2 ** 40, 'tbit': 10 ** 40}
+         'tbyte': 8 * 2 ** 40, 'tbit': 2 ** 40}
     return n * s[old] / s[new]
 
-def indexN(string, substring, N=1):
+
+def index_n(substring: str, string: str, n: int = 1) -> int:
     """
-    Returns the index of N occurrence of the substring in the source string
+    Возвращает n-ое вхождение СЛЕВА подстроки
+    substring в строку string. Если такого вхождения
+    нет, возвращается -1000
+    :param n:
+    :param string:
+    :param substring:
+    :return: int
     """
-    index, count = None, 0
+    index, count = -1000, 0
     for i in range(len(string) - len(substring) + 1):
         if string[i:i + len(substring):] == substring:
             count += 1
-            if count == N:
+            if count == n:
                 index = i
                 break
     if count == 0:
@@ -22,9 +36,13 @@ def indexN(string, substring, N=1):
     return index
 
 
-def count(string, substring):
+def count(substring: str, string: str) -> int:
     """
-    Returns the number of occurrences of the substring in the source string
+    Возвращает количество вхождений подстроки
+    substring в строку string
+    :param substring:
+    :param string:
+    :return: int
     """
     count = 0
     for i in range(len(string) - len(substring) + 1):
@@ -33,9 +51,14 @@ def count(string, substring):
     return count
 
 
-def Translation_systems_counts(number, old_base=10, new_base=10):
+def new_num_sys(number: object, old_base: int = 10, new_base: int = 10) -> object:
     """
-    Coming soon...
+    Переводит число number с основанием old_base в
+    число с основанием new_base
+    :param number:
+    :param old_base:
+    :param new_base:
+    :return: object
     """
     if old_base == new_base:
         return number
@@ -51,4 +74,4 @@ def Translation_systems_counts(number, old_base=10, new_base=10):
             r = mods[y] + r
         return r
     else:
-        return Translation_systems_counts(Translation_systems_counts(number, old_base, 10), 10, new_base)
+        return new_num_sys(new_num_sys(number, old_base), 10, new_base)

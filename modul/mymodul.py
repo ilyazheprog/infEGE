@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def cache(f):
+def cache(f: object)-> object:
+    '''
+    Кэширование функции
+    :param f:
+    :return: object
+    '''
     ch = {}
     
     def wrapper(*args, **kwargs):

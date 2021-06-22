@@ -1,12 +1,12 @@
 from .varibles import *
 
 
-def fib(n):
-    '''
+def fib(n: int) -> int:
+    """
     Возвращает n-ый член последовательности Фибоначчи
     :param n:
-    :return int:
-    '''
+    :return: int
+    """
     __author__ = 'kaazniy'
     
     def matrix_mult(matrix1, matrix2):
@@ -39,88 +39,91 @@ def fib(n):
         return (quick_exp([[1, 1], [1, 0]], n - 1))[0][0]
 
 
-def div(n, d):
-    '''
+def div(n: int, d: int) -> int:
+    """
     Возвращает целую часть от деления n на d
     :param n:
     :param d:
-    :return int:
-    '''
+    :return: int
+    """
     return n // d
 
 
-def mod(n, d):
-    '''
+def mod(n: int, d: int) -> int:
+    """
     Возвращает остаток от деления n на d
     :param n:
     :param d:
-    :return int:
-    '''
+    :return: int
+    """
     return abs(n % d)
 
 
-def divided(n, d):
-    '''
+def divided(n: int, d: int) -> bool:
+    """
     Если n делится на d, то возващается True, иначе - False
     :param n:
-    :return bool:
-    '''
+    :param d:
+    :return: bool
+    """
     return mod(n, d) == 0
 
 
-def not_divisible(n, d):
-    '''
-    Если n не делится на d, то возващается True, иначе - False
+def not_divisible(n: int, d: int) -> bool:
+    """
+    Если n не делится на d, то возващается True,
+    иначе - False
     :param n:
-    :return bool:
-    '''
+    :param d:
+    :return: bool
+    """
     return mod(n, d) != 0
 
 
-def is_Even(n):
-    '''
+def is_Even(n: int) -> bool:
+    """
     Если n - чётно, то возващается True, иначе - False
     :param n:
-    :return bool:
-    '''
+    :return: bool
+    """
     return divided(n, 2)
 
 
-def is_Odd(n):
-    '''
+def is_Odd(n: int) -> bool:
+    """
     Если n - нечётно, то возващается True, иначе - False
     :param n:
-    :return bool:
-    '''
+    :return: bool
+    """
     return not_divisible(n, 2)
 
 
-def power(n, exp):
-    '''
+def power(n: float, exp: float) -> float:
+    """
     Возвращает n в степени exp
     :param n:
     :param exp:
-    :return float:
-    '''
+    :return: float
+    """
     return n ** exp
 
 
-def sqrt(n):
-    '''
+def sqrt(n: float) -> float:
+    """
     Возвращает корень из n
     :param n:
-    :return float:
-    '''
+    :return: float
+    """
     return power(n, 0.5)
 
 
-def factorize(number):
-    '''
+def factorize(number: int) -> list:
+    """
     Возвращает разложение числа n на простые
-    множители
-    :param n:
-    :return list:
-    '''
+    множители в list
+    :param number:
+    :return: list
+    """
     prime_factors = []
     while number % 2 == 0:
         prime_factors.append(2)
@@ -134,24 +137,24 @@ def factorize(number):
     return prime_factors
 
 
-def factorial(n):
-    '''
+def factorial(n: int) -> int:
+    """
     Возвращает n!
     :param n:
-    :return int:
-    '''
+    :return: int
+    """
     r = 1
     for var in range(1, n + 1):
         r *= var
     return r
 
 
-def divizors(n):
-    '''
+def divizors(n: int) -> list:
+    """
     Возвращает все делители числа  n
     :param n:
-    :return list
-    '''
+    :return: list
+    """
     divs = set()
     for d in range(2, int(sqrt(n)) + 1):
         if mod(n, d) == 0:
@@ -162,12 +165,12 @@ def divizors(n):
     return divs
 
 
-def isPrime(n):
-    '''
+def isPrime(n: int) -> bool:
+    """
     Если n - простое, то возващается True, иначе - False
     :param n:
-    :return bool:
-    '''
+    :return: bool
+    """
     if int(sqrt(n)) ** 2 == n or n in [0, 1]:
         return false
     for i in range(2, int(sqrt(n))):
