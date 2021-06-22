@@ -1,16 +1,10 @@
 def dataTR(n, old, new):
-    s = {'bit': 1, 'byte': 8, 'kbit': 1000,
-         'kbyte': 8 * 10 ** 3, 'mbyte': 8 * 10 ** 6,
-         'mbit': 10 ** 6, 'gbyte': 8 * 10 ** 9,
-         'gbit': 10 ** 9, 'tbyte': 8 * 1024 ** 4,
-         'tbit': 10 ** 12}
+    s = {'bit': 1, 'byte': 8,
+         'kbit': 2 ** 10, 'kbyte': 8 * 2 ** 10,
+         'mbyte': 8 * 2 ** 20, 'mbit': 2 ** 20,
+         'gbyte': 8 * 2 ** 30, 'gbit': 2 ** 30,
+         'tbyte': 8 * 2 ** 40, 'tbit': 10 ** 40}
     return n * s[old] / s[new]
-
-
-def quickIn(a, el):
-    d = {x: 1 for x in a}
-    return el in d
-
 
 def indexN(string, substring, N=1):
     """
