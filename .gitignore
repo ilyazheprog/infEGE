@@ -1,4 +1,6 @@
 __pycache__
 .vscode
 .idea
+modul/__pycache__
+modul/.idea
 for_testing_and_debug.py
