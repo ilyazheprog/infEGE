@@ -171,9 +171,9 @@ def isPrime(n: int) -> bool:
     :param n:
     :return: bool
     """
-    if int(sqrt(n)) ** 2 == n or n in [0, 1]:
+    if n in [0, 1]:
         return false
-    for i in range(2, int(sqrt(n))):
+    for i in range(2, int(sqrt(n))+1):
         if mod(n, i) == 0:
             return false
     return true
