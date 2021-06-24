@@ -56,7 +56,14 @@ def mod(n: int, d: int) -> int:
     :param d:
     :return: int
     """
-    return abs(n % d)
+    if n==0 and d!=0:
+        return 0
+    elif d==0:
+        raise ZeroDivisionError('d == 0')
+    if (n<0 and d<0) or (n<0 and d>0):
+        return -abs(abs(n) % abs(d))
+    elif (n>0 and d<0) or (n>0 and d>0):
+        return abs(abs(n) % abs(d))
 
 
 def divided(n: int, d: int) -> bool:
