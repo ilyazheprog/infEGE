@@ -32,3 +32,11 @@ def count(substring: str, string: str) -> int:
         if string[i:i + len(substring):] == substring:
             count += 1
     return count
+
+
+def is_number(n):
+    for i in range(len(n)):
+        if not (ord('0')<=ord(n[i])<=ord('9')):
+            return False
+    else:
+        return True
