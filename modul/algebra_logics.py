@@ -1,5 +1,5 @@
 from .combinatorics import permutation_repeat
-
+from .work_with_string import replacing
 
 def printTrueTable(vars, expretion, value='all'):
     d = permutation_repeat([0, 1], len(vars))
@@ -7,7 +7,7 @@ def printTrueTable(vars, expretion, value='all'):
     for el in d:
         copyexp = expretion
         for varib in vars:
-            copyexp = copyexp.replace(varib, str(el[vars.index(varib)]))
+            copyexp = replacing(copyexp, varib, str(el[vars.index(varib)]), 'целиком')
         if int(eval(copyexp))==value:
             print(*el, ' ', value, sep='')
         if value=='all':

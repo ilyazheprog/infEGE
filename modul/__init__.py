@@ -3,7 +3,7 @@
 
 from .mymodul import *
 from .mathematics import *
-from .varibles import *
+from .constants import *
 from .algebra_logics import *
 from .combinatorics import *
 from .system_count_and_computer_data import *
