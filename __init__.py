@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from mymodul import *
+from other import *
 from mathematics import *
 from constants import *
 from algebra_logics import *
