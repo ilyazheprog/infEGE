@@ -1,4 +1,4 @@
-from .system_count_and_computer_data import new_num_sys as nns
+from system_count_and_computer_data import new_num_sys as nns
 
 
 def permutation_repeat(vars, k):

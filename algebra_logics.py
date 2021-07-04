@@ -1,5 +1,5 @@
-from .combinatorics import permutation_repeat
-from .work_with_string import replacing
+from combinatorics import permutation_repeat
+from work_with_string import replacing
 
 def printTrueTable(vars, expretion, value='all'):
     d = permutation_repeat([0, 1], len(vars))
