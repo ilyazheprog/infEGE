@@ -1,11 +1,11 @@
 def replacing(s, sub, ns, mode='обычно', count='all'):
-    if count==0:
+    if count == 0:
         return s
-    if mode=='обычно':
-        if count=='all':
+    if mode == 'обычно':
+        if count == 'all':
             return s.replace(sub, ns)
         return s.replace(sub, ns, count)
-    if mode=='целиком':
+    if mode == 'целиком':
         goodchars = ' ,./!;:?()-@#$%&\'\\\"*'
         result = ''
         if s[:len(sub)] == sub and s[len(sub)] in goodchars:
@@ -15,25 +15,25 @@ def replacing(s, sub, ns, mode='обычно', count='all'):
             result += s[0]
             s = s[1:]
         while (len(s)):
-                if len(s) < len(sub):
-                    result += s
-                    break
-                else:
-                    try:
-                        l = s[len(sub)]
-                        if s[:len(sub)] == sub and result[-1] in goodchars and l in goodchars:
-                            result += ns
-                            s = s[len(sub):]
-                        else:
-                            result += s[0]
-                            s = s[1:]
-                    except IndexError:
-                        if s == sub:
-                            result += ns
-                            break
-                        else:
-                            result += s
-                            break
+            if len(s) < len(sub):
+                result += s
+                break
+            else:
+                try:
+                    l = s[len(sub)]
+                    if s[:len(sub)] == sub and result[-1] in goodchars and l in goodchars:
+                        result += ns
+                        s = s[len(sub):]
+                    else:
+                        result += s[0]
+                        s = s[1:]
+                except IndexError:
+                    if s == sub:
+                        result += ns
+                        break
+                    else:
+                        result += s
+                        break
         return result
 
 
@@ -74,7 +74,7 @@ def count(substring: str, string: str) -> int:
 
 def is_number(n):
     for i in range(len(n)):
-        if not (ord('0')<=ord(n[i])<=ord('9')):
+        if not (ord('0') <= ord(n[i]) <= ord('9')):
             return False
     else:
         return True
