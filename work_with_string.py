@@ -1,38 +1,54 @@
-def replacing(s, sub, ns, mode='обычно', count='all'):
+def replacing(string: str, substring: str, new_string: str, mode: str = 'обычно', count: str = 'all') -> str:
+    """
+    Возвращает строку string с заменённой подстрокой
+    substring на  подстроку new_string в количестве
+    count.
+    Режим "обычно":
+                    замена стандартным replace
+    Режим "целиком":
+                    замена подстроки substring если она не
+                    является частью большей подстроки
+    :param string:
+    :param substring:
+    :param new_string:
+    :param mode:
+    :param count:
+    :return result:
+    """
     if count == 0:
-        return s
+        return string
     if mode == 'обычно':
         if count == 'all':
-            return s.replace(sub, ns)
-        return s.replace(sub, ns, count)
+            return string.replace(substring, new_string)
+        return string.replace(substring, new_string, count)
     if mode == 'целиком':
         goodchars = ' ,./!;:?()-@#$%&\'\\\"*'
         result = ''
-        if s[:len(sub)] == sub and s[len(sub)] in goodchars:
-            s = s[len(sub):]
-            result = ns
+        if string[:len(substring)] == substring and string[len(substring)] in goodchars:
+            string = string[len(substring):]
+            result = new_string
         else:
-            result += s[0]
-            s = s[1:]
-        while (len(s)):
-            if len(s) < len(sub):
-                result += s
+            result += string[0]
+            string = string[1:]
+        while (len(string)):
+            if len(string) < len(substring):
+                result += string
                 break
             else:
                 try:
-                    l = s[len(sub)]
-                    if s[:len(sub)] == sub and result[-1] in goodchars and l in goodchars:
-                        result += ns
-                        s = s[len(sub):]
+                    next_char = string[len(substring)]
+                    if string[:len(substring)] == substring and result[-1] in goodchars and next_char in goodchars:
+                        result += new_string
+                        string = string[len(substring):]
                     else:
-                        result += s[0]
-                        s = s[1:]
+                        result += string[0]
+                        string = string[1:]
                 except IndexError:
-                    if s == sub:
-                        result += ns
+                    if string == substring:
+                        result += new_string
                         break
                     else:
-                        result += s
+                        result += string
                         break
         return result
 
@@ -72,9 +88,15 @@ def count(substring: str, string: str) -> int:
     return count
 
 
-def is_number(n):
+def is_number(n: str)->bool:
+    """
+    Проверяет является ли строка n числом.
+    Если да возвращается True, иначе - False
+    :param n:
+    :return: bool
+    """
     for i in range(len(n)):
         if not (ord('0') <= ord(n[i]) <= ord('9')):
             return False
-    else:
-        return True
+    return True
+

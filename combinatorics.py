@@ -1,28 +1,36 @@
-from system_count_and_computer_data import new_num_sys as nns
+from EasyUse.system_count_and_computer_data import new_num_sys as nns
 
 
-def permutation_repeat(vars, k):
+def permutation_repeat(iter, repeat):
+    '''
+    Возвращает перестановки итерировванного
+    обьекта iter с repeat повторениями
+    :param iter:
+    :param repeat:
+    :return: tuple
+    '''
     masks = []
     res = []
-    for v in range(len(vars) ** k):
-        n = nns(v, new_base=len(vars))
-        masks += ['0' * (k - len(n)) + n]
-    if type(vars) == str:
+    for v in range(len(iter) ** repeat):
+        n = nns(v, new_base=len(iter))
+        masks += ['0' * (repeat - len(n)) + n]
+    if type(iter) == str:
         for m in masks:
             s = ''
             for i in m:
-                s += ' ' + vars[int(i)]
+                s += ' ' + iter[int(i)]
             res.append(tuple(map(str, s.split())))
     
-    if type(vars) == list:
+    if type(iter) == list:
         for m in masks:
             s = []
             for i in m:
-                s += [vars[int(i)]]
+                s += [iter[int(i)]]
             res.append(tuple(s))
     return tuple(res)
 
 def permutations(lst):
+    
     if len(lst) == 0:
         return []
     if len(lst) == 1:

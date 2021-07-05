@@ -1,4 +1,4 @@
-from constants import *
+from EasyUse.constants import *
 
 
 def fib(n: int) -> int:
