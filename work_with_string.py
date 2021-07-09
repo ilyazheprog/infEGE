@@ -22,7 +22,7 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
             return string.replace(substring, new_string)
         return string.replace(substring, new_string, count)
     if mode == 'целиком':
-        goodchars = ' ,./!;:?()-@#$%&\'\\\"*'
+        goodchars = ' ,./!;:?()<=-@#$%&\'\\\"*'
         result = ''
         if string[:len(substring)] == substring and string[len(substring)] in goodchars:
             string = string[len(substring):]
