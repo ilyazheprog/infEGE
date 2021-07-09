@@ -2,12 +2,12 @@ from EasyUse.combinatorics import permutation_repeat
 from EasyUse.work_with_string import replacing
 
 def printTrueTable(vars, expretion, value='all'):
-    d = permutation_repeat([0, 1], len(vars))
+    d = permutation_repeat('01', len(vars))
     print(vars, 'F')
     for el in d:
         copyexp = expretion
-        for varib in vars:
-            copyexp = replacing(copyexp, varib, str(el[vars.index(varib)]), 'целиком')
+        for varib, rep in zip(vars, el):
+            copyexp = replacing(copyexp, varib, rep, 'целиком')
         if int(eval(copyexp))==value:
             print(*el, ' ', value, sep='')
         if value=='all':
