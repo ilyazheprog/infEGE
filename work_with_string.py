@@ -22,9 +22,8 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
             return string.replace(substring, new_string)
         return string.replace(substring, new_string, count)
     if mode == 'целиком':
-        goodchars = ' ,./!;:?()<=-@#$%&\'\\\"*'
         result = ''
-        if string[:len(substring)] == substring and string[len(substring)] in goodchars:
+        if string[:len(substring)] == substring and not string[len(substring)].isalpha():
             string = string[len(substring):]
             result = new_string
         else:
@@ -37,7 +36,7 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
             else:
                 try:
                     next_char = string[len(substring)]
-                    if string[:len(substring)] == substring and result[-1] in goodchars and next_char in goodchars:
+                    if string[:len(substring)] == substring and not result[-1].isalpha() and not next_char.isalpha():
                         result += new_string
                         string = string[len(substring):]
                     else:
