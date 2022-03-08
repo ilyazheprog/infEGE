@@ -1,7 +1,11 @@
-from .combinatorics import permutation_repeat
-from .work_with_string import replacing
+from combinatorics import permutation_repeat
+from work_with_string import replacing
 
-def printTrueTable(vars, expretion, value='all'):
+
+def printTrueTable(vars, expretion:str, value='all'):
+    operations = {"&":"and", "|":"or", "~":"not", "->":"<="}
+    for new, old in operations.items():
+        expretion=expretion.replace(old, new)
     d = permutation_repeat('01', len(vars))
     print(vars, 'F')
     for el in d:
