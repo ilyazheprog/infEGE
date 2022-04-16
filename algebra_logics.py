@@ -5,7 +5,7 @@ from .work_with_string import replacing
 def printTrueTable(vars, expretion:str, value='all'):
     operations = {"&":"and", "|":"or", "~":"not", "->":"<="}
     for new, old in operations.items():
-        expretion=expretion.replace(old, new)
+        expretion=expretion.replace(new, old)
     d = permutation_repeat('01', len(vars))
     print(vars, 'F')
     for el in d:
