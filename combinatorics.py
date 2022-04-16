@@ -3,7 +3,7 @@ from .system_count_and_computer_data import new_num_sys as nns
 
 def permutation_repeat(iter, repeat):
     """
-    Возвращает перестановки итерировванного
+    Возвращает перестановки элкементов итерировванного
     обьекта iter с repeat повторениями
     :param iter:
     :param repeat:
@@ -28,7 +28,11 @@ def permutation_repeat(iter, repeat):
             yield tuple(s)
 
 def permutations(lst):
-    
+    """
+    Возвращает перестановки элкементов списка lst
+    :param lst:
+    :return:
+    """
     if len(lst) == 0:
         return []
     if len(lst) == 1:

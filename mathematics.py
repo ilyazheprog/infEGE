@@ -56,23 +56,6 @@ def div(n: int, d: int) -> int:
         return -abs(abs(n) // abs(d))
 
 
-def mod(n: int, d: int) -> int:
-    """
-    Возвращает остаток от деления n на d
-    :param n:
-    :param d:
-    :return: int
-    """
-    if n==0 and d!=0:
-        return 0
-    elif d==0:
-        raise ZeroDivisionError('d == 0')
-    if (n<0 and d<0) or (n<0 and d>0):
-        return -abs(abs(n) % abs(d))
-    elif (n>0 and d<0) or (n>0 and d>0):
-        return abs(abs(n) % abs(d))
-
-
 def divided(n: int, d: int) -> bool:
     """
     Если n делится на d, то возващается True, иначе - False
@@ -80,7 +63,7 @@ def divided(n: int, d: int) -> bool:
     :param d:
     :return: bool
     """
-    return mod(n, d) == 0
+    return n % d == 0
 
 
 def not_divisible(n: int, d: int) -> bool:
@@ -91,7 +74,7 @@ def not_divisible(n: int, d: int) -> bool:
     :param d:
     :return: bool
     """
-    return mod(n, d) != 0
+    return n % d != 0
 
 
 def is_Even(n: int) -> bool:
@@ -163,20 +146,13 @@ def factorial(n: int) -> int:
     return r
 
 
-def divizors(n: int) -> list:
+def divisors(n: int) -> list:
     """
-    Возвращает все делители числа  n
+    Возвращает все натуральные делители числа n на интервале (1; n)
     :param n:
     :return: list
     """
-    divs = set()
-    for d in range(2, int(sqrt(n)) + 1):
-        if mod(n, d) == 0:
-            divs.add(d)
-            divs.add(n // d)
-    divs = list(divs)
-    divs.sort()
-    return divs
+    return sorted({t for i in range(2, int(sqrt(n)) + 1) for t in {i, n//i} if divided(n, t)})
 
 
 def isPrime(n: int) -> bool:
@@ -185,9 +161,4 @@ def isPrime(n: int) -> bool:
     :param n:
     :return: bool
     """
-    if n in [0, 1]:
-        return false
-    for i in range(2, int(sqrt(n))+1):
-        if mod(n, i) == 0:
-            return false
-    return true
+    return n != 1 and all(divided(n, d) for d in range(2, int(sqrt(n)) + 1))
