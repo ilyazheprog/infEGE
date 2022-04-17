@@ -7,4 +7,5 @@ from .constants import *
 from .algebra_logics import *
 from .combinatorics import *
 from .system_count_and_computer_data import *
-from .work_with_string import *
+from .string import *
+from .lists_and_other import *
