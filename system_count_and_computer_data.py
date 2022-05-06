@@ -9,7 +9,7 @@ def new_num_sys(number: object, old_base: int = 10, new_base: int = 10) -> objec
     """
     if old_base == new_base:
         return number
-    elif not (2 <= old_base < 36) or not (2 <= new_base < 36):
+    elif not (2 <= old_base <= 36) or not (2 <= new_base <= 36):
         raise BaseException("Невозможно перевести, т.к., old_base и new_base должны быть от 2 до 35")
     elif new_base == 10:
         return int(str(number), old_base)
