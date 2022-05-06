@@ -9,3 +9,4 @@ from .combinatorics import *
 from .system_count_and_computer_data import *
 from .string import *
 from .lists_and_other import *
+from .for_task4 import FanoFunc
