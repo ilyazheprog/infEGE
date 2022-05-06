@@ -11,9 +11,9 @@
 ===
 
 Ссылки на версии
-1. Version 1.0 stable 
+1. Version 1.3 stable 
 
-<a href="https://github.com/Ilya484/infEGE/archive/refs/tags/v1.0.zip"><img src="https://img.icons8.com/fluency/344/download.png" width=15%></a>
+<a href="https://github.com/Ilya484/infEGE/releases/tag/v1.3"><img src="https://img.icons8.com/fluency/344/download.png" width=15%></a>
 
 
 2. Version stream (новейшая) unstable 
