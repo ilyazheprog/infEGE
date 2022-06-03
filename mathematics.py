@@ -39,23 +39,6 @@ def fib(n: int) -> int:
         return (quick_exp([[1, 1], [1, 0]], n - 1))[0][0]
 
 
-def div(n: int, d: int) -> int:
-    """
-    Возвращает целую часть от деления n на d
-    :param n:
-    :param d:
-    :return: int
-    """
-    if n == 0 and d != 0:
-        return 0
-    elif d == 0:
-        raise ZeroDivisionError('d == 0')
-    if (n < 0 and d < 0) or (n > 0 and d > 0):
-        return abs(abs(n) // abs(d))
-    elif (n > 0 and d < 0) or (n < 0 and d > 0):
-        return -abs(abs(n) // abs(d))
-
-
 def divided(n: int, d: int) -> bool:
     """
     Если n делится на d, то возващается True, иначе - False
@@ -161,4 +144,4 @@ def isPrime(n: int) -> bool:
     :param n:
     :return: bool
     """
-    return n != 1 and all(divided(n, d) for d in range(2, int(sqrt(n)) + 1))
+    return n > 1 and all(not_divisible(n, d) for d in range(2, int(sqrt(n)) + 1))
