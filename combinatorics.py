@@ -1,46 +1,26 @@
-from .system_count_and_computer_data import new_num_sys as nns
+from typing import Union, List, Tuple
+
+from system_count_and_computer_data import new_num_sys as nns
 
 
-def permutation_repeat(iter, repeat):
+def permutation_repeat(seq: Union[List, Tuple], repeat: int = 1):
     """
     Возвращает перестановки элкементов итерировванного
-    обьекта iter с repeat повторениями
-    :param iter:
-    :param repeat:
-    :return:
+    обьекта seq с repeat повторениями.
     """
     def _gen_mask():
-        for v in range(len(iter) ** repeat):
-            n = nns(v, new_base=len(iter))
+        for v in range(len(seq) ** repeat):
+            n = nns(v, new_base=len(seq))
             yield '0' * (repeat - len(n)) + n
-    if type(iter) == str:
-        for m in _gen_mask():
-            s = ''
-            for i in m:
-                s += ' ' + iter[int(i)]
-            yield tuple(map(str, s.split()))
-    
-    if type(iter) == list:
-        for m in _gen_mask():
-            s = []
-            for i in m:
-                s += [iter[int(i)]]
-            yield tuple(s)
 
-def permutations(lst):
+    for m in _gen_mask():
+        s = [seq[int(i)] for i in m]
+        yield tuple(s)
+
+
+def permutations(seq: Union[List, Tuple, str]):
     """
-    Возвращает перестановки элкементов списка lst
-    :param lst:
-    :return:
+    Возвращает перестановки элкементов итерировванного объекта seq.
     """
-    if len(lst) == 0:
-        return []
-    if len(lst) == 1:
-        return [lst]
-    l = []
-    for i in range(len(lst)):
-        m = lst[i]
-        remLst = lst[:i] + lst[i + 1:]
-        for p in permutations(remLst):
-            l.append(m + p)
-    return l
+    return permutation_repeat(seq, len(seq))
+

@@ -1,11 +1,11 @@
-iterable = "iter"
+iterable = "seq"
 
 __all__ = ["prod"]
 
 
 def prod(iter: iterable) -> float:
     """
-    Возввращает произведение эл-ов итер-ого объекта iter
+    Возввращает произведение эл-ов итер-ого объекта seq
     :param iter:
     :return:
     """

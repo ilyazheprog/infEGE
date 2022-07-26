@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from typing import Callable
 
-def cache(f: object) -> object:
+
+def cache(f: Callable) -> Callable:
     """
-    Кэширование функции
-    :param f:
-    :return: object
+    Кэширование функции (декоратор).
     """
     ch = {}
 

@@ -1,16 +1,15 @@
-def new_num_sys(number: object, old_base: int = 10, new_base: int = 10) -> object:
+from typing import Union
+
+
+def new_num_sys(number: Union[int, str], old_base: int = 10, new_base: int = 10) -> Union[int, str]:
     """
     Переводит число number с основанием old_base в
-    число с основанием new_base
-    :param number:
-    :param old_base:
-    :param new_base:
-    :return: object
+    число с основанием new_base.
     """
     if old_base == new_base:
         return number
     elif not (2 <= old_base <= 36) or not (2 <= new_base <= 36):
-        raise BaseException("Невозможно перевести, т.к., old_base и new_base должны быть от 2 до 35")
+        raise BaseException("Невозможно перевести, т.к., old_base и new_base должны быть от 2 до 36")
     elif new_base == 10:
         return int(str(number), old_base)
     elif old_base == 10:
@@ -23,13 +22,10 @@ def new_num_sys(number: object, old_base: int = 10, new_base: int = 10) -> objec
     else:
         return new_num_sys(new_num_sys(number, old_base), 10, new_base)
 
+
 def data_tr(n: float, old: str, new: str) -> float:
     """
-    Переводит объёмы информации
-    :param n:
-    :param old:
-    :param new:
-    :return: float
+    Переводит объёмы информации.
     """
     s = {'bit': 1, 'byte': 8,
          'kbyte': 8 * 2 ** 10, 'kbit': 2 ** 10,

@@ -1,26 +1,22 @@
-def replacing(string: str, substring: str, new_string: str, mode: str = 'обычно', count: str = 'all') -> str:
+def replacing(string: str, substring: str, new_string: str, mode: str = 'обычно', cnt: str = 'all') -> str:
     """
     Возвращает строку string с заменённой подстрокой
     substring на  подстроку new_string в количестве
-    count.
+    cnt.
+
     Режим "обычно":
                     замена стандартным replace
+
     Режим "целиком":
                     замена подстроки substring если она не
-                    является частью большей подстроки
-    :param string:
-    :param substring:
-    :param new_string:
-    :param mode:
-    :param count:
-    :return result:
+                    является частью большей подстроки.
     """
-    if count == 0:
+    if cnt == 0:
         return string
     if mode == 'обычно':
-        if count == 'all':
+        if cnt == 'all':
             return string.replace(substring, new_string)
-        return string.replace(substring, new_string, count)
+        return string.replace(substring, new_string, cnt)
     if mode == 'целиком':
         result = ''
         if string[:len(substring)] == substring and not string[len(substring)].isalpha():
@@ -54,48 +50,35 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
 
 def index_n(substring: str, string: str, n: int = 1) -> int:
     """
-    Возвращает n-ое вхождение СЛЕВА подстроки
+    Возвращает индекс n-го вхождения СЛЕВА подстроки
     substring в строку string. Если такого вхождения
-    нет, возвращается -1000
-    :param n:
-    :param string:
-    :param substring:
-    :return: int
+    нет, возвращается -1000.
     """
-    index, count = -1000, 0
+    index, cnt = -1000, 0
     for i in range(len(string) - len(substring) + 1):
         if string[i:i + len(substring):] == substring:
-            count += 1
-            if count == n:
+            cnt += 1
+            if cnt == n:
                 index = i
                 break
     return index
 
 
-def count(substring: str, string: str) -> int:
+def count(string: str, substring: str) -> int:
     """
     Возвращает количество вхождений подстроки
-    substring в строку string
-    :param substring:
-    :param string:
-    :return: int
+    substring в строку string.
     """
-    count = 0
+    cnt = 0
     for i in range(len(string) - len(substring) + 1):
         if string[i:i + len(substring):] == substring:
-            count += 1
-    return count
+            cnt += 1
+    return cnt
 
 
-def is_number(n: str)->bool:
+def is_number(n: str) -> bool:
     """
     Проверяет является ли строка n числом.
-    Если да возвращается True, иначе - False
-    :param n:
-    :return: bool
+    Если да возвращается True, иначе - False.
     """
-    for i in range(len(n)):
-        if not (ord('0') <= ord(n[i]) <= ord('9')):
-            return False
-    return True
-
+    return all("0" <= sym <= "9" for sym in n)
