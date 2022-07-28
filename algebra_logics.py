@@ -4,7 +4,7 @@ from .combinatorics import permutation_repeat
 from .string import replacing
 
 
-def print_true_table(variables: Union[str, List[str]], expretion: str, value='all'):
+def print_true_table(variables: Union[str, List[str]], expretion: str, value: Union[int, bool, 'all'] = 'all'):
     """
     Вывод таблицы истинности лог.функции expretion от переменных variables.
 

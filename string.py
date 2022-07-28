@@ -25,7 +25,7 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
         else:
             result += string[0]
             string = string[1:]
-        while (len(string)):
+        while len(string):
             if len(string) < len(substring):
                 result += string
                 break
@@ -48,7 +48,7 @@ def replacing(string: str, substring: str, new_string: str, mode: str = 'обы�
         return result
 
 
-def index_n(substring: str, string: str, n: int = 1) -> int:
+def index_n(string: str, substring: str, n: int = 1) -> int:
     """
     Возвращает индекс n-го вхождения СЛЕВА подстроки
     substring в строку string. Если такого вхождения
@@ -64,21 +64,13 @@ def index_n(substring: str, string: str, n: int = 1) -> int:
     return index
 
 
-def count(string: str, substring: str) -> int:
-    """
-    Возвращает количество вхождений подстроки
-    substring в строку string.
-    """
-    cnt = 0
-    for i in range(len(string) - len(substring) + 1):
-        if string[i:i + len(substring):] == substring:
-            cnt += 1
-    return cnt
-
-
 def is_number(n: str) -> bool:
     """
     Проверяет является ли строка n числом.
     Если да возвращается True, иначе - False.
     """
+    if not isinstance(n, str):
+        _type = str(type(n))
+        raise TypeError("'n' должен иметь тип str, а передан тип {}!".format(_type.split()[1][1:-2]))
+
     return all("0" <= sym <= "9" for sym in n)

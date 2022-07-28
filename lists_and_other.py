@@ -1,18 +1,15 @@
-iterable = "seq"
-
-__all__ = ["prod"]
+from typing import Iterable, Union
 
 
-def prod(iter: iterable) -> float:
+def prod(seq: Iterable) -> Union[int, float]:
     """
-    Возввращает произведение эл-ов итер-ого объекта seq
-    :param iter:
-    :return:
+    Возввращает произведение элементов итерируемого объекта seq.
     """
     p = 1
 
-    for el in iter:
+    for el in seq:
         if el == 0:
             return 0
         p *= el
+
     return p

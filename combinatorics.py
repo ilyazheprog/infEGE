@@ -1,16 +1,16 @@
-from typing import Union, List, Tuple
+from typing import Union
 
-from system_count_and_computer_data import new_num_sys as nns
+from .system_count import to_base
 
 
-def permutation_repeat(seq: Union[List, Tuple], repeat: int = 1):
+def permutation_repeat(seq: Union[list, tuple, str], repeat: int = 1):
     """
-    Возвращает перестановки элкементов итерировванного
+    Возвращает перестановки элкементов итерируемого
     обьекта seq с repeat повторениями.
     """
     def _gen_mask():
         for v in range(len(seq) ** repeat):
-            n = nns(v, new_base=len(seq))
+            n = to_base(v, new_base=len(seq))
             yield '0' * (repeat - len(n)) + n
 
     for m in _gen_mask():
@@ -18,9 +18,20 @@ def permutation_repeat(seq: Union[List, Tuple], repeat: int = 1):
         yield tuple(s)
 
 
-def permutations(seq: Union[List, Tuple, str]):
+def permutations(seq: Union[list, tuple, str]):
     """
-    Возвращает перестановки элкементов итерировванного объекта seq.
+    Возвращает перестановки элкементов итерируемого объекта seq.
     """
-    return permutation_repeat(seq, len(seq))
+    if len(seq) == 0:
+        return []
+    if len(seq) == 1:
+        return [seq]
 
+    lst = []
+
+    for i in range(len(seq)):
+        m = seq[i]
+        remLst = seq[:i] + seq[i + 1:]
+        for p in permutations(remLst):
+            lst.append(m + p)
+    return lst

@@ -1,46 +1,6 @@
 from math import sqrt
 
 
-def fib(n: int) -> int:
-    """
-    Возвращает n-ый член последовательности Фибоначчи.
-    """
-    __author__ = 'kaazniy'
-
-    def matrix_mult(matrix1, matrix2):
-        return [
-            [
-                matrix1[0][0] * matrix2[0][0] + matrix1[0][1] * matrix2[1][0],
-                matrix1[0][0] * matrix2[0][1] + matrix1[0][1] * matrix2[1][1],
-            ],
-            [
-                matrix1[1][0] * matrix2[0][0] + matrix1[1][1] * matrix2[1][0],
-                matrix1[1][0] * matrix2[0][1] + matrix1[1][1] * matrix2[1][1],
-            ],
-        ]
-
-    def quick_exp(matrix: list[list[int]], power: int):
-        if power == 0:
-            return [[1, 0], [0, 1]]
-        elif power == 1:
-            return matrix
-        else:
-            p = power // 2
-            m = power % 2
-
-            sub = quick_exp(matrix, p)
-            squared = matrix_mult(sub, sub)
-            rem = quick_exp(matrix, m)
-            return matrix_mult(squared, rem)
-
-    if n == 0:
-        return 0
-    elif n == 1 or n == 2:
-        return 1
-    else:
-        return (quick_exp([[1, 1], [1, 0]], n - 1))[0][0]
-
-
 def divided(n: int, d: int) -> bool:
     """
     Если n делится на d, то возващается True, иначе - False.
@@ -50,8 +10,7 @@ def divided(n: int, d: int) -> bool:
 
 def not_divisible(n: int, d: int) -> bool:
     """
-    Если n не делится на d, то возващается True,
-    иначе - False.
+    Если n не делится на d, то возващается True, иначе - False.
     """
     return n % d != 0
 
@@ -70,11 +29,39 @@ def is_odd(n: int) -> bool:
     return n % 2 != 0  # Быстрее чем &
 
 
+def is_prime(n: int) -> bool:
+    """
+    Если n - простое, то возващается True, иначе - False.
+    """
+    return n > 1 and all(not_divisible(n, d) for d in range(2, int(sqrt(n)) + 1))
+
+
+def fib(n: int) -> int:
+    """
+    Возвращает n-ый член последовательности Фибоначчи. Нумерация с 0.
+    """
+    if not isinstance(n, int):
+        _type = str(type(n))
+        raise TypeError("'n' должен иметь тип int, а передан тип {}!".format(_type.split()[1][1:-2]))
+
+    if n in {0, 1}:
+        return n
+
+    l, r = 0, 1
+
+    for _ in range(n - 1):
+        l, r = r, l + r
+    return r
+
+
 def factorize(number: int) -> list:
     """
-    Возвращает разложение числа n на простые
-    множители в list.
+    Возвращает разложение числа number на простые множители в list.
     """
+    if not isinstance(number, int):
+        _type = str(type(number))
+        raise TypeError("'number' должен иметь тип int, а передан тип {}!".format(_type.split()[1][1:-2]))
+
     prime_factors = []
     while number % 2 == 0:
         prime_factors.append(2)
@@ -90,8 +77,12 @@ def factorize(number: int) -> list:
 
 def factorial(n: int) -> int:
     """
-    Возвращает n!
+    Возвращает n! (0! = 1)
     """
+    if not isinstance(n, int):
+        _type = str(type(n))
+        raise TypeError("'n' должен иметь тип int, а передан тип {}!".format(_type.split()[1][1:-2]))
+
     r = 1
     for var in range(2, n + 1):
         r *= var
@@ -102,11 +93,8 @@ def divisors(n: int) -> list:
     """
     Возвращает все натуральные делители числа n на интервале (1; n).
     """
+    if not isinstance(n, int):
+        _type = str(type(n))
+        raise TypeError("'n' должен иметь тип int, а передан тип {}!".format(_type.split()[1][1:-2]))
+
     return sorted(t for i in range(2, int(sqrt(n)) + 1) for t in {i, n // i} if divided(n, t))
-
-
-def is_prime(n: int) -> bool:
-    """
-    Если n - простое, то возващается True, иначе - False.
-    """
-    return n > 1 and all(not_divisible(n, d) for d in range(2, int(sqrt(n)) + 1))
