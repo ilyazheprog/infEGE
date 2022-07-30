@@ -432,7 +432,7 @@ True
 
 Для чего: 
 
-    Если n делится на d, то возващается True, иначе - False.
+    Если n нацело делится на d, то возващается True, иначе - False.
 Пример использования #1:
 ```python
 from infEGE import divided
