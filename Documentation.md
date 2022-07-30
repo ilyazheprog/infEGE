@@ -432,7 +432,7 @@ True
 
 Для чего: 
 
-    Если n нацело делится на d, то возващается True, иначе - False.
+    Если n нацело делится на d, то возвращается True, иначе - False.
 Пример использования #1:
 ```python
 from infEGE import divided
@@ -459,7 +459,7 @@ True
 
 Для чего: 
 
-    Если n не делится на d, то возващается True, иначе - False.
+    Если n не делится нацело на d, то возвращается True, иначе - False.
 Пример использования #1:
 ```python
 from infEGE import not_divisible
