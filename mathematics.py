@@ -5,7 +5,7 @@ from exceptions import ImpossibleValue
 
 def divided(n: int, d: int) -> bool:
     """
-    Если n делится на d, то возващается True, иначе - False.
+    Если n нацело делится на d, то возващается True, иначе - False.
     """
     if not isinstance(n, int):
         _type = str(type(n))
@@ -20,7 +20,7 @@ def divided(n: int, d: int) -> bool:
 
 def not_divisible(n: int, d: int) -> bool:
     """
-    Если n не делится на d, то возващается True, иначе - False.
+    Если n не делится нацело на d, то возващается True, иначе - False.
     """
     if not isinstance(n, int):
         _type = str(type(n))
