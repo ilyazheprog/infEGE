@@ -38,7 +38,7 @@ minValue = float('-inf')
 
 ### Модуль algebra_logic
 #### 1. Функция print_true_table
-Синтаксис: **print_true_table(variables: Union[str, List[str]], expretion: str, value: Union[int, bool, 'all'] = 'all')**
+Синтаксис: **print_true_table(variables: str, expretion: str, value: Union[int, bool, 'all'] = 'all') -> None**
 
 Для чего: 
     
@@ -100,18 +100,19 @@ xzy F
 ```
 ---
 ### Модуль combinatorics
-#### 1. Функция permutation_repeat
-Синтаксис: **permutation_repeat(seq: Union[list, tuple, str], repeat: int = 1)**
+#### 1. Функция permutation_with_repeat
+Синтаксис: **permutation_with_repeat(seq: Union[list, tuple, str], repeat: int = 1)**
 
 Для чего: 
 
     Возвращает перестановки элкементов итерируемого
     обьекта seq с repeat повторениями.
 Пример использования:
-```python
-from infEGE import permutation_repeat
 
-for el in permutation_repeat('123', 2):
+```python
+from infEGE import permutation_with_repeat
+
+for el in permutation_with_repeat('123', 2):
     print(el)
 ```
 Вывод:
@@ -151,7 +152,7 @@ cba
 ---
 ### Модуль lists_and_other
 #### 1. Функция prod
-Синтаксис: **prod(seq: Iterable) -> Union[int, float]**
+Синтаксис: **prod(seq: Union[list, tuple, set]) -> Union[int, float]**
 
 Для чего: 
 
@@ -169,7 +170,7 @@ print(prod([5, 8, 6, 100, 54]))
 ---
 ### Модуль string
 #### 1. Функция replacing
-Синтаксис: **replacing(string: str, substring: str, new_string: str, mode: str = 'обычно', cnt: str = 'all') -> str**
+Синтаксис: **replacing(string: str, substring: str, new_string: str, mode: str = 'обычно', cnt: Union[int, str] = 'all') -> str**
 
 Для чего: 
 
