@@ -1,10 +1,11 @@
-from typing import Union, List
+from typing import Union
 
-from .combinatorics import permutation_repeat
+from .combinatorics import permutation_with_repeat
 from .string import replacing
+from .exceptions import ImpossibleValue
 
 
-def print_true_table(variables: Union[str, List[str]], expretion: str, value='all'):
+def print_true_table(variables: str, expretion: str, value: Union[int, bool, 'all'] = 'all') -> None:
     """
     Вывод таблицы истинности лог.функции expretion от переменных variables.
 
@@ -18,6 +19,21 @@ def print_true_table(variables: Union[str, List[str]], expretion: str, value='al
     или такие эквиваленты:
     {"&": " and ", "|": " or ", "~": " not ", "->": "<="}
     """
+    if not isinstance(variables, str):
+        _type = str(type(variables))
+        raise TypeError("'variables' должен иметь тип str, а передан тип {}!".format(_type.split()[1][1:-2]))
+
+    if not isinstance(expretion, str):
+        _type = str(type(expretion))
+        raise TypeError("'expretion' должен иметь тип str, а передан тип {}!".format(_type.split()[1][1:-2]))
+
+    if not any(isinstance(value, t) for t in (int, bool, str)):
+        _type = str(type(value))
+        raise TypeError("'value' должен иметь тип int, bool или str, а передан тип {}!".format(_type.split()[1][1:-2]))
+
+    if isinstance(value, str) and value != "all":
+        raise ImpossibleValue("Неизвестное {}. Возможно, Вы имели в виду \"all\"!".format(value))
+
     operations = {"&": " and ", "|": " or ", "~": " not ", "->": "<="}
 
     for new, old in operations.items():
@@ -25,7 +41,7 @@ def print_true_table(variables: Union[str, List[str]], expretion: str, value='al
 
     print(variables, 'F')
 
-    for row in permutation_repeat('01', len(variables)):
+    for row in permutation_with_repeat('01', len(variables)):
         copy_exp = expretion
 
         for old, new in zip(variables, row):
