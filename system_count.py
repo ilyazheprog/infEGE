@@ -1,5 +1,5 @@
 from typing import Union
-from exceptions import InvalidBase
+from .exceptions import InvalidBase
 
 __all__ = ["to_base"]
 

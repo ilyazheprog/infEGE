@@ -1,5 +1,5 @@
 from typing import Union
-from exceptions import InvalidMode, ImpossibleValue
+from .exceptions import InvalidMode, ImpossibleValue
 
 __all__ = ["replacing", "index_n", "is_number"]
 

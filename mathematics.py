@@ -1,6 +1,6 @@
 from math import sqrt
 
-from exceptions import ImpossibleValue
+from .exceptions import ImpossibleValue
 
 
 def divided(n: int, d: int) -> bool:
