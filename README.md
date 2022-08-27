@@ -18,7 +18,7 @@ pip install infEGE
 ---
 Контакты
 =
-VK: https://vk.com/stobalnik_po_informatike
+VK: https://vk.com/programmer_open_sourse
 
 TELEGRAM: @IZ_PROGRAMMER 
 
